@@ -235,6 +235,103 @@ namespace SerialPortHelper.Helper
             return stringByte;
         }
 
+        /// <summary>
+        /// 把16进制字符串转换成英文数字和汉子混合格式
+        /// </summary>
+        /// <param name="inString">需要转换的16进制字符串</param>
+        /// <returns></returns>
+        public string From16ToString(string inString)
+        {
+            inString = DeleteSplitString(inString);
+            return Encoding.Default.GetString(From16ToBytes(inString));
+        }
+
+        /// <summary>
+        /// 把byte[]转换成String
+        /// </summary>
+        /// <param name="bytes">需要转换的byte[]</param>
+        /// <param name="hex">隔离符</param>
+        /// <returns></returns>
+        public string BytesToString(byte[] bytes,EnumHex hex)
+        {
+            return From16ToString(BytesTo16(bytes, hex));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name=""></param>
+        /// <param name="hex"></param>
+        /// <returns></returns>
+        public string BytesTo16(byte[] bytes,EnumHex hex)
+        {
+            string outString = string.Empty;
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                // 16进制数为一位时前面填充0
+                if (bytes[i].ToString("X").Length<2)
+                {
+                    //转成16进制数
+                    outString += "0" + bytes[i].ToString("X")+AddSplitString(hex);
+                }
+                else
+                {
+                    //转成16进制数据
+                    outString += bytes[i].ToString("X")+AddSplitString(hex);
+                }
+            }
+            return outString;
+        }
+
+        /// <summary>
+        /// 把byte[]直接转换成字符串,直接以2进制形式显示出来
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="hex"></param>
+        /// <returns></returns>
+        public string BytesTo2String(byte[] bytes,EnumHex hex)
+        {
+            string outSting = "";
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                string tempString = Convert.ToString(bytes[i],2);
+                if (tempString.Length!=8)
+                {
+                    string add0 = "";
+                    for (int j = 0; j < 8-tempString.Length; j++)
+                    {
+                        add0 += "0";
+                    }
+                    tempString += add0 + tempString + AddSplitString(hex);
+                }
+                else
+                {
+                    outSting += tempString + AddSplitString(hex);
+                }
+            }
+            return outSting;
+        }
+
+        /// <summary>
+        /// 把字符串传进来，输出一个byte数组 【可以把此byte数组直接发送到串口中】
+        /// </summary>
+        /// <param name="inString">要转换的字符串</param>
+        /// <param name="is16">是否已经是16进制，true时已经是，false不是(需要转换)</param>
+        /// <returns>输出一个byte数组</returns>
+        public byte[] StringToBytes(string inString,bool is16)
+        {
+            if (is16)
+            {
+                return From16ToBytes(inString);
+            }
+            else
+            {
+                return StringToBytes(inString);
+            }
+        }
+
         #endregion
 
     }
