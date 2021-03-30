@@ -41,16 +41,16 @@ namespace SerialPortHelper
             this.cboComList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtReciver = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnOpen = new System.Windows.Forms.Button();
+            this.txtSender = new System.Windows.Forms.TextBox();
+            this.btnOpenPort = new System.Windows.Forms.Button();
             this.btnSendData = new System.Windows.Forms.Button();
             this.btnClearData = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.cb16Send = new System.Windows.Forms.CheckBox();
+            this.cb16Recive = new System.Windows.Forms.CheckBox();
+            this.lblSerialPortStatusShow = new System.Windows.Forms.Label();
+            this.lblSerialPortStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,6 +85,7 @@ namespace SerialPortHelper
             this.cboStopBit.Name = "cboStopBit";
             this.cboStopBit.Size = new System.Drawing.Size(121, 20);
             this.cboStopBit.TabIndex = 9;
+            this.cboStopBit.SelectedIndexChanged += new System.EventHandler(this.cboStopBit_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -106,6 +107,7 @@ namespace SerialPortHelper
             this.cboDataBits.Name = "cboDataBits";
             this.cboDataBits.Size = new System.Drawing.Size(121, 20);
             this.cboDataBits.TabIndex = 7;
+            this.cboDataBits.SelectedIndexChanged += new System.EventHandler(this.cboDataBits_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -127,6 +129,7 @@ namespace SerialPortHelper
             this.cboCheckBit.Name = "cboCheckBit";
             this.cboCheckBit.Size = new System.Drawing.Size(121, 20);
             this.cboCheckBit.TabIndex = 5;
+            this.cboCheckBit.SelectedIndexChanged += new System.EventHandler(this.cboCheckBit_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -157,6 +160,7 @@ namespace SerialPortHelper
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(121, 20);
             this.cboBaudRate.TabIndex = 3;
+            this.cboBaudRate.SelectedIndexChanged += new System.EventHandler(this.cboBaudRate_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -188,7 +192,7 @@ namespace SerialPortHelper
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtReciver);
             this.groupBox2.Location = new System.Drawing.Point(263, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(454, 104);
@@ -196,17 +200,17 @@ namespace SerialPortHelper
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "接收数据";
             // 
-            // textBox2
+            // txtReciver
             // 
-            this.textBox2.Location = new System.Drawing.Point(25, 18);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(416, 75);
-            this.textBox2.TabIndex = 0;
+            this.txtReciver.Location = new System.Drawing.Point(25, 18);
+            this.txtReciver.Multiline = true;
+            this.txtReciver.Name = "txtReciver";
+            this.txtReciver.Size = new System.Drawing.Size(416, 75);
+            this.txtReciver.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtSender);
             this.groupBox3.Location = new System.Drawing.Point(265, 128);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(453, 65);
@@ -214,22 +218,23 @@ namespace SerialPortHelper
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "发送数据【可以是中文字符串】";
             // 
-            // textBox1
+            // txtSender
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 17);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(415, 39);
-            this.textBox1.TabIndex = 0;
+            this.txtSender.Location = new System.Drawing.Point(25, 17);
+            this.txtSender.Multiline = true;
+            this.txtSender.Name = "txtSender";
+            this.txtSender.Size = new System.Drawing.Size(415, 39);
+            this.txtSender.TabIndex = 0;
             // 
-            // btnOpen
+            // btnOpenPort
             // 
-            this.btnOpen.Location = new System.Drawing.Point(158, 219);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(95, 40);
-            this.btnOpen.TabIndex = 3;
-            this.btnOpen.Text = "打开串口";
-            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpenPort.Location = new System.Drawing.Point(158, 219);
+            this.btnOpenPort.Name = "btnOpenPort";
+            this.btnOpenPort.Size = new System.Drawing.Size(95, 40);
+            this.btnOpenPort.TabIndex = 3;
+            this.btnOpenPort.Text = "打开串口";
+            this.btnOpenPort.UseVisualStyleBackColor = true;
+            this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
             // 
             // btnSendData
             // 
@@ -239,6 +244,7 @@ namespace SerialPortHelper
             this.btnSendData.TabIndex = 4;
             this.btnSendData.Text = "发送数据";
             this.btnSendData.UseVisualStyleBackColor = true;
+            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
             // btnClearData
             // 
@@ -249,56 +255,56 @@ namespace SerialPortHelper
             this.btnClearData.Text = "清空数据";
             this.btnClearData.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cb16Send
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(511, 224);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(204, 16);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "十六进制发送【发送前需要校验】";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cb16Send.AutoSize = true;
+            this.cb16Send.Location = new System.Drawing.Point(511, 224);
+            this.cb16Send.Name = "cb16Send";
+            this.cb16Send.Size = new System.Drawing.Size(204, 16);
+            this.cb16Send.TabIndex = 6;
+            this.cb16Send.Text = "十六进制发送【发送前需要校验】";
+            this.cb16Send.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cb16Recive
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(511, 243);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(204, 16);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "十六进制接收【接收后直接转换】";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cb16Recive.AutoSize = true;
+            this.cb16Recive.Location = new System.Drawing.Point(511, 243);
+            this.cb16Recive.Name = "cb16Recive";
+            this.cb16Recive.Size = new System.Drawing.Size(204, 16);
+            this.cb16Recive.TabIndex = 7;
+            this.cb16Recive.Text = "十六进制接收【接收后直接转换】";
+            this.cb16Recive.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // lblSerialPortStatusShow
             // 
-            this.label6.BackColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(24, 233);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 20);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "    ";
+            this.lblSerialPortStatusShow.BackColor = System.Drawing.Color.Red;
+            this.lblSerialPortStatusShow.Location = new System.Drawing.Point(24, 233);
+            this.lblSerialPortStatusShow.Name = "lblSerialPortStatusShow";
+            this.lblSerialPortStatusShow.Size = new System.Drawing.Size(20, 20);
+            this.lblSerialPortStatusShow.TabIndex = 8;
+            this.lblSerialPortStatusShow.Text = "    ";
             // 
-            // label7
+            // lblSerialPortStatus
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 236);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "串口未打开";
+            this.lblSerialPortStatus.AutoSize = true;
+            this.lblSerialPortStatus.Location = new System.Drawing.Point(50, 236);
+            this.lblSerialPortStatus.Name = "lblSerialPortStatus";
+            this.lblSerialPortStatus.Size = new System.Drawing.Size(65, 12);
+            this.lblSerialPortStatus.TabIndex = 9;
+            this.lblSerialPortStatus.Text = "串口未打开";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 277);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.lblSerialPortStatus);
+            this.Controls.Add(this.lblSerialPortStatusShow);
+            this.Controls.Add(this.cb16Recive);
+            this.Controls.Add(this.cb16Send);
             this.Controls.Add(this.btnClearData);
             this.Controls.Add(this.btnSendData);
-            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnOpenPort);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -333,15 +339,15 @@ namespace SerialPortHelper
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboBaudRate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.TextBox txtReciver;
+        private System.Windows.Forms.TextBox txtSender;
+        private System.Windows.Forms.Button btnOpenPort;
         private System.Windows.Forms.Button btnSendData;
         private System.Windows.Forms.Button btnClearData;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox cb16Send;
+        private System.Windows.Forms.CheckBox cb16Recive;
+        private System.Windows.Forms.Label lblSerialPortStatusShow;
+        private System.Windows.Forms.Label lblSerialPortStatus;
     }
 }
 

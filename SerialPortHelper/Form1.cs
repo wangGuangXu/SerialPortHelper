@@ -30,8 +30,8 @@ namespace SerialPortHelper
             //获取计算机的串口
             if (this.serialPortHelper.PortNames.Length==0)
             {
-                MessageBox.Show("当前计算机没有可用的端口","警告信息");
-                this.btnOpen.Enabled = false;//禁用打开串口按钮
+                MessageBox.Show("当前计算机没有可用的端口");
+                this.btnOpenPort.Enabled = false;//禁用打开串口按钮
             }
             else
             {
@@ -39,7 +39,161 @@ namespace SerialPortHelper
                 this.cboComList.Items.AddRange(this.serialPortHelper.PortNames);
                 this.cboComList.SelectedIndex = 0;
             }
+            //串口对象委托和串口接收数据关联
+            this.serialPortHelper.SerialPort.DataReceived += new SerialDataReceivedEventHandler(this.serialPort_DataReceived);
         }
+
+        #region 串口设置
+        
+        //波特率设置
+        private void cboBaudRate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.serialPortHelper.SerialPort.BaudRate = Convert.ToInt32(this.cboBaudRate.Text);
+        }
+
+        //设置奇偶校验
+        private void cboCheckBit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCheckBit.Text == "EVEN")
+            {
+                this.serialPortHelper.SerialPort.Parity = Parity.Even;
+            }
+            else if (cboCheckBit.Text == "ODD")
+            {
+                this.serialPortHelper.SerialPort.Parity = Parity.Odd;
+            }
+            else if (cboCheckBit.Text == "NONE")
+            {
+                this.serialPortHelper.SerialPort.Parity = Parity.None;
+            }
+
+        }
+
+        //数据位
+        private void cboDataBits_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.serialPortHelper.SerialPort.DataBits = Convert.ToInt32(cboDataBits.Text);
+        }
+
+        //停止位
+        private void cboStopBit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboStopBit.Text=="1")
+            {
+                this.serialPortHelper.SerialPort.StopBits = StopBits.One;
+            }
+            else if (cboStopBit.Text=="2")
+            {
+                this.serialPortHelper.SerialPort.StopBits = StopBits.Two;
+            }
+        }
+
+
+
+        #endregion
+
+        #region 打开与关闭串口
+        private void btnOpenPort_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.btnOpenPort.Text == "打开串口")
+                {
+                    this.serialPortHelper.OpenSerialPort(this.cboComList.Text.Trim(), 1);
+                    lblSerialPortStatus.Text = "串口已打开";
+                    lblSerialPortStatusShow.BackColor = Color.Green;
+                    btnOpenPort.Text = "关闭串口";
+                }
+                else
+                {
+                    this.serialPortHelper.OpenSerialPort(this.cboComList.Text.Trim(), 0);
+                    lblSerialPortStatus.Text = "串口未打开";
+                    lblSerialPortStatusShow.BackColor = Color.Red;
+                    btnOpenPort.Text = "打开串口";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("端口操作异常：" + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region 发送数据
+        private void btnSendData_Click(object sender, EventArgs e)
+        {
+            if (this.txtSender.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("发送内容不能为空", "提示信息");
+                return;
+            }
+            else
+            {
+                //开始发送
+                SendData(txtSender.Text.Trim());
+            }
+        } 
+        private void SendData(string data)
+        {
+            try
+            {
+                if (cb16Send.Checked)
+                {
+                    this.serialPortHelper.SendData(data, Helper.SendFormat.Hex);//发送16进制数
+                }
+                else
+                {
+                    this.serialPortHelper.SendData(data, Helper.SendFormat.String);//发送字符串
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("发送数据错误"+ex.Message, "错误提示");
+            }
+        }
+
+
+        #endregion
+
+        #region 接收数据
+        //串口接收数据
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                ReceiveData(this.serialPortHelper.ReceiveData());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("串口接收数据出现异常：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 接收数据
+        /// </summary>
+        /// <param name="bytes"></param>
+        private void ReceiveData(byte[] bytes)
+        {
+            string data = string.Empty;
+            if (cb16Recive.Checked)
+            {
+                //16进制接收
+                data = this.serialPortHelper.AlgorithmHelper.BytesTo16(bytes, Helper.EnumHex.Blank);
+            }
+            else
+            {
+                data = this.serialPortHelper.AlgorithmHelper.BytesToString(bytes, Helper.EnumHex.Blank);
+            }
+            //显示到文本框中
+            //因为接收数据是一个独立线程，所有必须通过跨线程访问可视化控件来完成展示
+            this.txtReciver.Invoke(new Action<string>(s =>
+            {
+                this.txtReciver.Text += " " + s;
+            }), data);
+        } 
+        #endregion
 
     }
 }

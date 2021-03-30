@@ -30,7 +30,12 @@ namespace SerialPortHelper.Helper
     }
 
     /// <summary>
-    /// 计算进制类助手
+    /// 计算进制类助手 
+    /// 无校验 （no parity）
+    /// 奇校验 （odd parity）：如果字符数据位中"1"的数目是偶数，校验位为"1"，如果"1"的数目是奇数，校验位应为"0"。（校验位调整个数）
+    /// 偶校验 （even parity）：如果字符数据位中"1"的数目是偶数，则校验位应为"0"，如果是奇数则为"1"。（校验位调整个数）
+    /// mark parity：校验位始终为1
+    /// space parity：校验位始终为0
     /// </summary>
     public class AlgorithmHelper
     {
