@@ -131,13 +131,14 @@ namespace SerialPortHelper
                 MessageBox.Show("发送内容不能为空", "提示信息");
                 return;
             }
-            else
+
+            //开始发送
+            if (SendData(txtSender.Text.Trim()))
             {
-                //开始发送
-                SendData(txtSender.Text.Trim());
+                txtSender.Clear();
             }
         } 
-        private void SendData(string data)
+        private bool SendData(string data)
         {
             try
             {
@@ -153,7 +154,9 @@ namespace SerialPortHelper
             catch (Exception ex)
             {
                 MessageBox.Show("发送数据错误"+ex.Message, "错误提示");
+                return false;
             }
+            return true;
         }
 
 
