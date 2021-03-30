@@ -1,0 +1,10 @@
+F:\github\SerialPortHelper\SerialPortHelper\bin\Debug\SerialPortHelper.exe.config
+F:\github\SerialPortHelper\SerialPortHelper\bin\Debug\SerialPortHelper.exe
+F:\github\SerialPortHelper\SerialPortHelper\bin\Debug\SerialPortHelper.pdb
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.csprojAssemblyReference.cache
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.Form1.resources
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.Properties.Resources.resources
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.csproj.GenerateResource.cache
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.csproj.CoreCompileInputs.cache
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.exe
+F:\github\SerialPortHelper\SerialPortHelper\obj\Debug\SerialPortHelper.pdb

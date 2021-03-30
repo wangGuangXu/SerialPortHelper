@@ -157,7 +157,6 @@ namespace SerialPortHelper
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(121, 20);
             this.cboBaudRate.TabIndex = 3;
-            this.cboBaudRate.Text = "9600";
             // 
             // label2
             // 
@@ -170,6 +169,8 @@ namespace SerialPortHelper
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(88, 26);
             this.comboBox1.Name = "comboBox1";
@@ -190,7 +191,7 @@ namespace SerialPortHelper
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Location = new System.Drawing.Point(263, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(499, 104);
+            this.groupBox2.Size = new System.Drawing.Size(454, 104);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "接受数据";
@@ -200,7 +201,7 @@ namespace SerialPortHelper
             this.textBox2.Location = new System.Drawing.Point(25, 18);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(464, 75);
+            this.textBox2.Size = new System.Drawing.Size(416, 75);
             this.textBox2.TabIndex = 0;
             // 
             // groupBox3
@@ -208,7 +209,7 @@ namespace SerialPortHelper
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Location = new System.Drawing.Point(265, 128);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(496, 65);
+            this.groupBox3.Size = new System.Drawing.Size(453, 65);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "发送数据";
@@ -218,12 +219,12 @@ namespace SerialPortHelper
             this.textBox1.Location = new System.Drawing.Point(25, 17);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(461, 39);
+            this.textBox1.Size = new System.Drawing.Size(415, 39);
             this.textBox1.TabIndex = 0;
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(189, 222);
+            this.btnOpen.Location = new System.Drawing.Point(158, 219);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(95, 40);
             this.btnOpen.TabIndex = 3;
@@ -232,7 +233,7 @@ namespace SerialPortHelper
             // 
             // btnSendData
             // 
-            this.btnSendData.Location = new System.Drawing.Point(307, 220);
+            this.btnSendData.Location = new System.Drawing.Point(265, 217);
             this.btnSendData.Name = "btnSendData";
             this.btnSendData.Size = new System.Drawing.Size(95, 40);
             this.btnSendData.TabIndex = 4;
@@ -241,7 +242,7 @@ namespace SerialPortHelper
             // 
             // btnClearData
             // 
-            this.btnClearData.Location = new System.Drawing.Point(419, 220);
+            this.btnClearData.Location = new System.Drawing.Point(378, 219);
             this.btnClearData.Name = "btnClearData";
             this.btnClearData.Size = new System.Drawing.Size(95, 40);
             this.btnClearData.TabIndex = 5;
@@ -251,7 +252,7 @@ namespace SerialPortHelper
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(558, 222);
+            this.checkBox1.Location = new System.Drawing.Point(511, 224);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(204, 16);
             this.checkBox1.TabIndex = 6;
@@ -261,7 +262,7 @@ namespace SerialPortHelper
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(558, 241);
+            this.checkBox2.Location = new System.Drawing.Point(511, 243);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(204, 16);
             this.checkBox2.TabIndex = 7;
@@ -290,7 +291,7 @@ namespace SerialPortHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 277);
+            this.ClientSize = new System.Drawing.Size(733, 277);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.checkBox2);
@@ -301,8 +302,11 @@ namespace SerialPortHelper
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "串口调试助手";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
