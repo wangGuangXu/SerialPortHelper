@@ -30,7 +30,7 @@ namespace SerialPortHelper
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cboStopBit = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboDataBits = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,7 +38,7 @@ namespace SerialPortHelper
             this.label3 = new System.Windows.Forms.Label();
             this.cboBaudRate = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboComList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -58,7 +58,7 @@ namespace SerialPortHelper
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox5);
+            this.groupBox1.Controls.Add(this.cboStopBit);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cboDataBits);
             this.groupBox1.Controls.Add(this.label4);
@@ -66,7 +66,7 @@ namespace SerialPortHelper
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cboBaudRate);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cboComList);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -75,16 +75,16 @@ namespace SerialPortHelper
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "串口设置";
             // 
-            // comboBox5
+            // cboStopBit
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.cboStopBit.FormattingEnabled = true;
+            this.cboStopBit.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.comboBox5.Location = new System.Drawing.Point(88, 146);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 20);
-            this.comboBox5.TabIndex = 9;
+            this.cboStopBit.Location = new System.Drawing.Point(88, 146);
+            this.cboStopBit.Name = "cboStopBit";
+            this.cboStopBit.Size = new System.Drawing.Size(121, 20);
+            this.cboStopBit.TabIndex = 9;
             // 
             // label5
             // 
@@ -167,15 +167,15 @@ namespace SerialPortHelper
             this.label2.TabIndex = 2;
             this.label2.Text = "波特率";
             // 
-            // comboBox1
+            // cboComList
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(88, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cboComList.BackColor = System.Drawing.SystemColors.Window;
+            this.cboComList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboComList.FormattingEnabled = true;
+            this.cboComList.Location = new System.Drawing.Point(88, 26);
+            this.cboComList.Name = "cboComList";
+            this.cboComList.Size = new System.Drawing.Size(121, 20);
+            this.cboComList.TabIndex = 1;
             // 
             // label1
             // 
@@ -194,7 +194,7 @@ namespace SerialPortHelper
             this.groupBox2.Size = new System.Drawing.Size(454, 104);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "接受数据";
+            this.groupBox2.Text = "接收数据";
             // 
             // textBox2
             // 
@@ -212,7 +212,7 @@ namespace SerialPortHelper
             this.groupBox3.Size = new System.Drawing.Size(453, 65);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "发送数据";
+            this.groupBox3.Text = "发送数据【可以是中文字符串】";
             // 
             // textBox1
             // 
@@ -323,9 +323,9 @@ namespace SerialPortHelper
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboComList;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cboStopBit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboDataBits;
         private System.Windows.Forms.Label label4;
