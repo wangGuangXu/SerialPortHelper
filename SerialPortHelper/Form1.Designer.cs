@@ -29,6 +29,7 @@ namespace SerialPortHelper
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboStopBit = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -228,9 +229,9 @@ namespace SerialPortHelper
             // 
             // btnOpenPort
             // 
-            this.btnOpenPort.Location = new System.Drawing.Point(158, 219);
+            this.btnOpenPort.Location = new System.Drawing.Point(158, 203);
             this.btnOpenPort.Name = "btnOpenPort";
-            this.btnOpenPort.Size = new System.Drawing.Size(95, 40);
+            this.btnOpenPort.Size = new System.Drawing.Size(95, 30);
             this.btnOpenPort.TabIndex = 3;
             this.btnOpenPort.Text = "打开串口";
             this.btnOpenPort.UseVisualStyleBackColor = true;
@@ -238,9 +239,9 @@ namespace SerialPortHelper
             // 
             // btnSendData
             // 
-            this.btnSendData.Location = new System.Drawing.Point(265, 217);
+            this.btnSendData.Location = new System.Drawing.Point(265, 202);
             this.btnSendData.Name = "btnSendData";
-            this.btnSendData.Size = new System.Drawing.Size(95, 40);
+            this.btnSendData.Size = new System.Drawing.Size(95, 30);
             this.btnSendData.TabIndex = 4;
             this.btnSendData.Text = "发送数据";
             this.btnSendData.UseVisualStyleBackColor = true;
@@ -248,9 +249,9 @@ namespace SerialPortHelper
             // 
             // btnClearData
             // 
-            this.btnClearData.Location = new System.Drawing.Point(378, 219);
+            this.btnClearData.Location = new System.Drawing.Point(378, 203);
             this.btnClearData.Name = "btnClearData";
-            this.btnClearData.Size = new System.Drawing.Size(95, 40);
+            this.btnClearData.Size = new System.Drawing.Size(95, 30);
             this.btnClearData.TabIndex = 5;
             this.btnClearData.Text = "清空数据";
             this.btnClearData.UseVisualStyleBackColor = true;
@@ -259,7 +260,7 @@ namespace SerialPortHelper
             // cb16Send
             // 
             this.cb16Send.AutoSize = true;
-            this.cb16Send.Location = new System.Drawing.Point(511, 224);
+            this.cb16Send.Location = new System.Drawing.Point(511, 197);
             this.cb16Send.Name = "cb16Send";
             this.cb16Send.Size = new System.Drawing.Size(204, 16);
             this.cb16Send.TabIndex = 6;
@@ -269,7 +270,7 @@ namespace SerialPortHelper
             // cb16Recive
             // 
             this.cb16Recive.AutoSize = true;
-            this.cb16Recive.Location = new System.Drawing.Point(511, 243);
+            this.cb16Recive.Location = new System.Drawing.Point(511, 216);
             this.cb16Recive.Name = "cb16Recive";
             this.cb16Recive.Size = new System.Drawing.Size(204, 16);
             this.cb16Recive.TabIndex = 7;
@@ -279,7 +280,7 @@ namespace SerialPortHelper
             // lblSerialPortStatusShow
             // 
             this.lblSerialPortStatusShow.BackColor = System.Drawing.Color.Red;
-            this.lblSerialPortStatusShow.Location = new System.Drawing.Point(24, 233);
+            this.lblSerialPortStatusShow.Location = new System.Drawing.Point(24, 209);
             this.lblSerialPortStatusShow.Name = "lblSerialPortStatusShow";
             this.lblSerialPortStatusShow.Size = new System.Drawing.Size(20, 20);
             this.lblSerialPortStatusShow.TabIndex = 8;
@@ -288,7 +289,7 @@ namespace SerialPortHelper
             // lblSerialPortStatus
             // 
             this.lblSerialPortStatus.AutoSize = true;
-            this.lblSerialPortStatus.Location = new System.Drawing.Point(50, 236);
+            this.lblSerialPortStatus.Location = new System.Drawing.Point(50, 214);
             this.lblSerialPortStatus.Name = "lblSerialPortStatus";
             this.lblSerialPortStatus.Size = new System.Drawing.Size(65, 12);
             this.lblSerialPortStatus.TabIndex = 9;
@@ -298,7 +299,7 @@ namespace SerialPortHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 277);
+            this.ClientSize = new System.Drawing.Size(733, 247);
             this.Controls.Add(this.lblSerialPortStatus);
             this.Controls.Add(this.lblSerialPortStatusShow);
             this.Controls.Add(this.cb16Recive);
@@ -309,6 +310,7 @@ namespace SerialPortHelper
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
