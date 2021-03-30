@@ -108,5 +108,8 @@
   <ItemGroup>
     <EmbeddedResource Include="serialPort.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="vspd.exe" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
