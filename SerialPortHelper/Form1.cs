@@ -157,6 +157,7 @@ namespace SerialPortHelper
         #endregion
 
         #region 接收数据
+
         //串口接收数据
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -177,6 +178,7 @@ namespace SerialPortHelper
         private void ReceiveData(byte[] bytes)
         {
             string data = string.Empty;
+            
             if (cb16Recive.Checked)
             {
                 //16进制接收
@@ -184,14 +186,27 @@ namespace SerialPortHelper
             }
             else
             {
-                data = this.serialPortHelper.AlgorithmHelper.BytesToString(bytes, Helper.EnumHex.Blank);
+                data = this.serialPortHelper.AlgorithmHelper.BytesToString(bytes, Helper.EnumHex.None);
             }
-            //显示到文本框中
-            //因为接收数据是一个独立线程，所有必须通过跨线程访问可视化控件来完成展示
+
+            //显示到文本框中,因为接收数据是一个独立线程，所有必须通过跨线程访问可视化控件来完成展示
             this.txtReciver.Invoke(new Action<string>(s =>
             {
                 this.txtReciver.Text += " " + s;
             }), data);
+
+            //屏蔽跨线程访问可视化控件引发的异常，不建议使用
+            //Control.CheckForIllegalCrossThreadCalls=false
+        }
+
+
+        #endregion
+
+        #region 清空数据
+        private void btnClearData_Click(object sender, EventArgs e)
+        {
+            txtReciver.Clear();
+            txtSender.Clear();
         } 
         #endregion
 

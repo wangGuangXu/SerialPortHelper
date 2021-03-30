@@ -254,6 +254,7 @@ namespace SerialPortHelper
             this.btnClearData.TabIndex = 5;
             this.btnClearData.Text = "清空数据";
             this.btnClearData.UseVisualStyleBackColor = true;
+            this.btnClearData.Click += new System.EventHandler(this.btnClearData_Click);
             // 
             // cb16Send
             // 
