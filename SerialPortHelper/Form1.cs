@@ -12,6 +12,9 @@ using System.IO.Ports;
 
 namespace SerialPortHelper
 {
+    /// <summary>
+    /// 串口相关文档：https://blog.csdn.net/p1279030826/article/details/86599435
+    /// </summary>
     public partial class Form1 : Form
     {
         //创建串口操作助手对象
