@@ -20,6 +20,7 @@ namespace SerialPortHelper
         //创建串口操作助手对象
         private SerialPortHelper.Helper.SerialPortHelper serialPortHelper = new SerialPortHelper.Helper.SerialPortHelper();
 
+        #region 构造函数
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace SerialPortHelper
             this.cboStopBit.SelectedIndex = 0;//停止位默认为1
 
             //获取计算机的串口
-            if (this.serialPortHelper.PortNames.Length==0)
+            if (this.serialPortHelper.PortNames.Length == 0)
             {
                 MessageBox.Show("当前计算机没有可用的端口");
                 this.btnOpenPort.Enabled = false;//禁用打开串口按钮
@@ -44,10 +45,11 @@ namespace SerialPortHelper
             }
             //串口对象委托和串口接收数据关联
             this.serialPortHelper.SerialPort.DataReceived += new SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-        }
+        } 
+        #endregion
 
         #region 串口设置
-        
+
         //波特率设置
         private void cboBaudRate_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,8 +92,6 @@ namespace SerialPortHelper
                 this.serialPortHelper.SerialPort.StopBits = StopBits.Two;
             }
         }
-
-
 
         #endregion
 
@@ -184,6 +184,8 @@ namespace SerialPortHelper
         private void ReceiveData(byte[] bytes)
         {
             string data = string.Empty;
+
+            this.serialPortHelper.SerialPort.NewLine = " ";
             
             if (cb16Recive.Checked)
             {
@@ -196,7 +198,7 @@ namespace SerialPortHelper
             }
 
             //显示到文本框中,因为接收数据是一个独立线程，所有必须通过跨线程访问可视化控件来完成展示
-            this.txtReciver.Invoke(new Action<string>(s =>
+            this.txtReciver.BeginInvoke(new Action<string>(s =>
             {
                 this.txtReciver.Text += " " + s;
             }), data);
@@ -205,7 +207,6 @@ namespace SerialPortHelper
             //Control.CheckForIllegalCrossThreadCalls=false
         }
 
-
         #endregion
 
         #region 清空数据
@@ -213,8 +214,12 @@ namespace SerialPortHelper
         {
             txtReciver.Clear();
             txtSender.Clear();
-        } 
+        }
         #endregion
 
+        private void cboComList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

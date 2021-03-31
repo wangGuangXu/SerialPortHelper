@@ -71,7 +71,7 @@ namespace SerialPortHelper
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(241, 181);
+            this.groupBox1.Size = new System.Drawing.Size(211, 181);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "串口设置";
@@ -82,7 +82,7 @@ namespace SerialPortHelper
             this.cboStopBit.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cboStopBit.Location = new System.Drawing.Point(88, 146);
+            this.cboStopBit.Location = new System.Drawing.Point(72, 146);
             this.cboStopBit.Name = "cboStopBit";
             this.cboStopBit.Size = new System.Drawing.Size(121, 20);
             this.cboStopBit.TabIndex = 9;
@@ -104,7 +104,7 @@ namespace SerialPortHelper
             "6",
             "7",
             "8"});
-            this.cboDataBits.Location = new System.Drawing.Point(88, 116);
+            this.cboDataBits.Location = new System.Drawing.Point(72, 116);
             this.cboDataBits.Name = "cboDataBits";
             this.cboDataBits.Size = new System.Drawing.Size(121, 20);
             this.cboDataBits.TabIndex = 7;
@@ -126,7 +126,7 @@ namespace SerialPortHelper
             "NONE",
             "ODD",
             "EVEN"});
-            this.cboCheckBit.Location = new System.Drawing.Point(88, 84);
+            this.cboCheckBit.Location = new System.Drawing.Point(72, 84);
             this.cboCheckBit.Name = "cboCheckBit";
             this.cboCheckBit.Size = new System.Drawing.Size(121, 20);
             this.cboCheckBit.TabIndex = 5;
@@ -157,7 +157,7 @@ namespace SerialPortHelper
             "56000",
             "57600",
             "115200"});
-            this.cboBaudRate.Location = new System.Drawing.Point(88, 55);
+            this.cboBaudRate.Location = new System.Drawing.Point(72, 55);
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(121, 20);
             this.cboBaudRate.TabIndex = 3;
@@ -177,10 +177,11 @@ namespace SerialPortHelper
             this.cboComList.BackColor = System.Drawing.SystemColors.Window;
             this.cboComList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComList.FormattingEnabled = true;
-            this.cboComList.Location = new System.Drawing.Point(88, 26);
+            this.cboComList.Location = new System.Drawing.Point(72, 26);
             this.cboComList.Name = "cboComList";
             this.cboComList.Size = new System.Drawing.Size(121, 20);
             this.cboComList.TabIndex = 1;
+            this.cboComList.SelectedIndexChanged += new System.EventHandler(this.cboComList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -194,7 +195,7 @@ namespace SerialPortHelper
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtReciver);
-            this.groupBox2.Location = new System.Drawing.Point(263, 12);
+            this.groupBox2.Location = new System.Drawing.Point(224, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(454, 104);
             this.groupBox2.TabIndex = 1;
@@ -212,7 +213,7 @@ namespace SerialPortHelper
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtSender);
-            this.groupBox3.Location = new System.Drawing.Point(265, 128);
+            this.groupBox3.Location = new System.Drawing.Point(226, 128);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(453, 65);
             this.groupBox3.TabIndex = 2;
@@ -229,7 +230,7 @@ namespace SerialPortHelper
             // 
             // btnOpenPort
             // 
-            this.btnOpenPort.Location = new System.Drawing.Point(158, 203);
+            this.btnOpenPort.Location = new System.Drawing.Point(128, 203);
             this.btnOpenPort.Name = "btnOpenPort";
             this.btnOpenPort.Size = new System.Drawing.Size(95, 30);
             this.btnOpenPort.TabIndex = 3;
@@ -239,7 +240,7 @@ namespace SerialPortHelper
             // 
             // btnSendData
             // 
-            this.btnSendData.Location = new System.Drawing.Point(265, 202);
+            this.btnSendData.Location = new System.Drawing.Point(226, 202);
             this.btnSendData.Name = "btnSendData";
             this.btnSendData.Size = new System.Drawing.Size(95, 30);
             this.btnSendData.TabIndex = 4;
@@ -249,7 +250,7 @@ namespace SerialPortHelper
             // 
             // btnClearData
             // 
-            this.btnClearData.Location = new System.Drawing.Point(378, 203);
+            this.btnClearData.Location = new System.Drawing.Point(339, 203);
             this.btnClearData.Name = "btnClearData";
             this.btnClearData.Size = new System.Drawing.Size(95, 30);
             this.btnClearData.TabIndex = 5;
@@ -260,7 +261,7 @@ namespace SerialPortHelper
             // cb16Send
             // 
             this.cb16Send.AutoSize = true;
-            this.cb16Send.Location = new System.Drawing.Point(511, 197);
+            this.cb16Send.Location = new System.Drawing.Point(472, 197);
             this.cb16Send.Name = "cb16Send";
             this.cb16Send.Size = new System.Drawing.Size(204, 16);
             this.cb16Send.TabIndex = 6;
@@ -270,7 +271,7 @@ namespace SerialPortHelper
             // cb16Recive
             // 
             this.cb16Recive.AutoSize = true;
-            this.cb16Recive.Location = new System.Drawing.Point(511, 216);
+            this.cb16Recive.Location = new System.Drawing.Point(472, 216);
             this.cb16Recive.Name = "cb16Recive";
             this.cb16Recive.Size = new System.Drawing.Size(204, 16);
             this.cb16Recive.TabIndex = 7;
@@ -299,7 +300,7 @@ namespace SerialPortHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 247);
+            this.ClientSize = new System.Drawing.Size(687, 261);
             this.Controls.Add(this.lblSerialPortStatus);
             this.Controls.Add(this.lblSerialPortStatusShow);
             this.Controls.Add(this.cb16Recive);
