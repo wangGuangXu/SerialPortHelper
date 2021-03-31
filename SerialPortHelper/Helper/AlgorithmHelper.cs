@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SerialPortHelper.Helper
 {
+    #region 16进制使用的隔离符枚举
     /// <summary>
     /// 16进制使用的隔离符枚举
     /// </summary>
@@ -27,7 +28,8 @@ namespace SerialPortHelper.Helper
         /// Ox
         /// </summary>
         Ox
-    }
+    } 
+    #endregion
 
     /// <summary>
     /// 计算进制类助手 
@@ -46,39 +48,38 @@ namespace SerialPortHelper.Helper
         /// <returns></returns>
         public string From10To16(int d)
         {
-            string hex = "";
+            string hex = string.Empty;
             if (d < 16)
             {
                 hex = BeginChange(d);
+                return hex;
             }
-            else
+
+            int c;
+            int s = 0;
+            int n = d;
+            int temp = d;
+            while (n >= 16)
             {
-                int c;
-                int s = 0;
-                int n = d;
-                int temp = d;
-                while (n >= 16)
-                {
-                    s++;
-                    n = n / 16;
-                }
-                string[] m = new string[s];
-                int i = 0;
-                do
-                {
-                    c = d / 16;
-                    //判断是否大于10，如果大于10，则转换为A~F的格式
-                    m[i++] = BeginChange(d % 16);
-                    d = c;
+                s++;
+                n = n / 16;
+            }
+            string[] m = new string[s];
+            int i = 0;
+            do
+            {
+                c = d / 16;
+                //判断是否大于10，如果大于10，则转换为A~F的格式
+                m[i++] = BeginChange(d % 16);
+                d = c;
 
-                } while (c >= 16);
+            } while (c >= 16);
 
-                hex = BeginChange(d);
+            hex = BeginChange(d);
 
-                for (int j = m.Length - 1; j >= 0; j--)
-                {
-                    hex += m[j];
-                }
+            for (int j = m.Length - 1; j >= 0; j--)
+            {
+                hex += m[j];
             }
             return hex;
         }
@@ -164,11 +165,9 @@ namespace SerialPortHelper.Helper
                 }
                 return outString;
             }
-            else
-            {
-                //不存在隔离符就直接返回
-                return inString;
-            }
+
+            //不存在隔离符就直接返回
+            return inString;
         }
 
         #endregion
@@ -189,7 +188,7 @@ namespace SerialPortHelper.Helper
             for (int i = 0; i < bytes.Length; i++)
             {
                 int strInt = Convert.ToInt16(bytes[i] - '\0');
-                string s = strInt.ToString("X");
+                string s = strInt.ToString("X");//ToString("X")是将数字转换为16进制字符串
                 if (s.Length==1)
                 {
                     s = "0" + s;
@@ -274,7 +273,7 @@ namespace SerialPortHelper.Helper
 
             for (int i = 0; i < bytes.Length; i++)
             {
-                // 16进制数为一位时前面填充0
+                // 16进制数为一位时前面填充0   如果是一位的（0xA）,此时为了对齐在数据前面加一个字符"0"(0x0A)
                 if (bytes[i].ToString("X").Length<2)
                 {
                     //转成16进制数
@@ -304,7 +303,7 @@ namespace SerialPortHelper.Helper
                 string tempString = Convert.ToString(bytes[i],2);
                 if (tempString.Length!=8)
                 {
-                    string add0 = "";
+                    string add0 = string.Empty;
                     for (int j = 0; j < 8-tempString.Length; j++)
                     {
                         add0 += "0";
