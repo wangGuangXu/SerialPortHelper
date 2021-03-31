@@ -207,6 +207,7 @@ namespace SerialPortHelper
             this.txtReciver.Location = new System.Drawing.Point(25, 18);
             this.txtReciver.Multiline = true;
             this.txtReciver.Name = "txtReciver";
+            this.txtReciver.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtReciver.Size = new System.Drawing.Size(416, 75);
             this.txtReciver.TabIndex = 0;
             // 
@@ -225,6 +226,7 @@ namespace SerialPortHelper
             this.txtSender.Location = new System.Drawing.Point(25, 17);
             this.txtSender.Multiline = true;
             this.txtSender.Name = "txtSender";
+            this.txtSender.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSender.Size = new System.Drawing.Size(415, 39);
             this.txtSender.TabIndex = 0;
             // 

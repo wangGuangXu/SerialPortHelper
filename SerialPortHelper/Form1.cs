@@ -14,6 +14,7 @@ namespace SerialPortHelper
 {
     /// <summary>
     /// 串口相关文档：https://blog.csdn.net/p1279030826/article/details/86599435
+    /// Modbus官网：https://www.modbustools.com/download.html
     /// </summary>
     public partial class Form1 : Form
     {
