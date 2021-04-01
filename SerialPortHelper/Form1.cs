@@ -15,6 +15,7 @@ namespace SerialPortHelper
     /// <summary>
     /// 串口相关文档：https://blog.csdn.net/p1279030826/article/details/86599435
     /// Modbus官网：https://www.modbustools.com/download.html
+    /// 国产永久免费免安装的MODBUS调试调测工具 :https://blog.csdn.net/zhoutanliang/article/details/106459315
     /// Modbus测试工具ModbusPoll与Modbus Slave使用方法: https://blog.csdn.net/byxdaz/article/details/77979114
     /// modbus slave和modbus poll使用说明: https://blog.csdn.net/hanhui22/article/details/108344006?utm_medium=distribute.pc_relevant_download.none-task-blog-baidujs-1.nonecase&depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-baidujs-1.nonecase
     /// </summary>
